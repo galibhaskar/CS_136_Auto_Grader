@@ -1,3 +1,77 @@
 {
-    "code_file":"calculateTotalInArray.c"
+    "code_file": "calculateTotalInArray.c",
+    "function": {
+        "name": "calculateTotalInArray",
+        "return_type": "<class 'ctypes.c_int'>",
+        "args_types": [
+            "<class 'ctypes._Pointer'> <class 'ctypes.c_int'>",
+            "<class 'ctypes.c_int'>"
+        ]
+    },
+    "test_cases": [
+        {
+            "input": [
+                1,
+                2,
+                3
+            ],
+            "expected_output": 6,
+            "weight": 2
+        },
+        {
+            "input": [
+                -1,
+                -2,
+                -3
+            ],
+            "expected_output": -6,
+            "weight": 2
+        },
+        {
+            "input": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "expected_output": 0,
+            "weight": 2
+        },
+        {
+            "input": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            "expected_output": 55,
+            "weight": 2
+        },
+        {
+            "input": [
+                -10,
+                5,
+                3,
+                -2,
+                0,
+                8,
+                -7
+            ],
+            "expected_output": -3,
+            "weight": 2
+        },
+        {
+            "input": [],
+            "expected_output": 0,
+            "weight": 2
+        }
+    ]
 }
