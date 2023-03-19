@@ -9,7 +9,7 @@ file_list = ['tests/test_code_format.py', 'tests/test_files.py',
 
 # Set the name of the zip file you want to create
 
-version = "1.0.0"
+version = "1.1.0"
 
 zip_path = f"../builds/autograder_v{version}.zip"
 
