@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Set up autograder files - Copy student files
+# to usable location.
+submissionFile=$(jq -r '.code_file' ./source/config.json)
+
+# If submission file exists,
+if [ -f "/autograder/submission/${submissionFile}" ]
+then
+  # copy it to the testing directory
+  cp /autograder/submission/${submissionFile} /autograder/source/${submissionFile}
+else
+  # grab any C files submitted and test them instead
+  files=$(find /autograder/submission/ -type f -name "*.c")
+
+  for file in $files
+  do
+    cp ${file} /autograder/source/${submissionFile}
+  done
+fi
+
+# Try to convert text encoding
+python3 /autograder/source/convert_to_ascii.py /autograder/source/${submissionFile}
+
+# Goto autograder source files.
+# tests/ is under this directory.
+cd /autograder/source
+
+python3 run_tests.py
