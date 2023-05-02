@@ -8,6 +8,7 @@
             "<class 'ctypes.c_int'>"
         ]
     },
+    "required_comments_count": 4,
     "test_cases": [
         {
             "input": [

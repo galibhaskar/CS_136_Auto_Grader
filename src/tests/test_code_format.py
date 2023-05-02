@@ -1,8 +1,9 @@
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, tags
-from utility import get_code_file_name
+from utility import get_code_file_name, get_required_comments_count
 
 code_file = get_code_file_name()
+min_comments_count = get_required_comments_count()
 
 
 class TestCodeContent(unittest.TestCase):
@@ -17,6 +18,7 @@ class TestCodeContent(unittest.TestCase):
         # Set default values
         has_comments = False
         current_line = 0
+        comments_count = 0
         # previous_comment = False
 
         # Iterate through the code until either the end of code or
@@ -26,6 +28,7 @@ class TestCodeContent(unittest.TestCase):
 
             # Only check code lines. Skip empty lines.
             if code_lines[current_line].strip().startswith("//"):
+                comments_count += 1
                 has_comments = True
 
             # elif code_lines[current_line].strip().startswith("/*"):
@@ -46,11 +49,11 @@ class TestCodeContent(unittest.TestCase):
             current_line += 1
 
         # Give student feedback
-        if has_comments:
+        if has_comments and comments_count >= min_comments_count:
             print("All lines commented.")
         else:
             # print("The line:\n")
             # print(code_lines[current_line - 1])
-            print("Your code does not have any comments explaining what it does.")
+            print("Your code does not have enough comments to explain the code.")
 
-        self.assertTrue(has_comments)
+        self.assertTrue(has_comments and comments_count >= min_comments_count)

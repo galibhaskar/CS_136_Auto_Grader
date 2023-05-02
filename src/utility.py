@@ -13,5 +13,8 @@ def get_test_cases():
 def get_function_info():
     return config['function']
 
+def get_required_comments_count():
+    return config['required_comments_count']
+
 def define_function_call(function, test_case):
     return function(test_case['expected_output'], test_case['input'], len(test_case['input']))
